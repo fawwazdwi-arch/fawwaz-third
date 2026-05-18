@@ -19,20 +19,20 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'hello@developer.com',
-    href: 'mailto:hello@developer.com',
+    value: 'akunfffawwaz250@gmail.com',
+    href: 'mailto:akunfffawwaz250@gmail.com',
   },
   {
     icon: Phone,
     label: 'Telepon',
-    value: '+62 812 3456 7890',
-    href: 'tel:+6281234567890',
+    value: '+62 895-1083-6605',
+    href: 'tel:+6289510836605',
   },
   {
     icon: MapPin,
     label: 'Lokasi',
-    value: 'Jakarta, Indonesia',
-    href: '#',
+    value: 'Banda Aceh, Indonesia',
+    href: 'https://maps.app.goo.gl/E4BwjanWNM7vyuSU8',
   },
 ];
 
@@ -140,6 +140,7 @@ export default function ContactSection() {
                 <motion.a
                   key={info.label}
                   href={info.href}
+                  target="-blank"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
