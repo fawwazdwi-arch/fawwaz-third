@@ -16,96 +16,124 @@ export default function HeroSection() {
       <ThreeScene />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        {/* Layout flex row pada layar besar (lg:) dan rata kiri */}
+        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 text-center lg:text-left">
+          
+          {/* ======================================================== */}
+          {/* FOTO PROFIL (SEBELAH KIRI PADA LAYAR BESAR) */}
+          {/* ======================================================== */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex-shrink-0"
           >
-            <motion.span 
-              className="inline-block px-4 py-2 rounded-full glass text-sm font-medium text-primary mb-6"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              👋 Selamat datang di portfolio saya
-            </motion.span>
+            {/* Menggunakan tag motion.img lengkap dengan atribut src */}
+            <motion.img 
+              src="/fotofawas.jpg" // <-- GANTI DENGAN NAMA FILE FOTOMU DI FOLDER PUBLIC
+              alt="Fawas Dwi Kuswandar"
+              className="w-40 h-40 md:w-56 md:h-56 rounded-3xl object-cover border-2 border-primary/20 shadow-glow"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            />
           </motion.div>
+          {/* ======================================================== */}
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
-          >
-            Fullstack Developer
-            <br />
-            <span className="text-gradient">&amp; Content Creator</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
-          >
-            Saya membangun aplikasi web yang indah dan fungsional, 
-            serta membagikan pengetahuan melalui konten yang inspiratif.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-          >
-            <Button 
-              size="lg" 
-              className="rounded-full px-8 shadow-glow"
-              onClick={() => {
-                const element = document.querySelector('#projects');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
+          {/* KONTEN TEKS DAN TOMBOL */}
+          <div className="flex-1 max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              Lihat Projects
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="rounded-full px-8"
-              onClick={() => {
-                const element = document.querySelector('#contact');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Hubungi Saya
-            </Button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex items-center justify-center gap-6"
-          >
-            {[
-              { icon: Github, href: '#', label: 'GitHub' },
-              { icon: Linkedin, href: '#', label: 'LinkedIn' },
-              { icon: Youtube, href: '#', label: 'YouTube' },
-              { icon: Instagram, href: '#', label: 'Instagram' },
-            ].map((social) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                className="p-3 rounded-full glass hover:shadow-glow transition-all duration-300"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label={social.label}
+              <motion.span 
+                className="inline-block px-4 py-2 rounded-full glass text-sm font-medium text-primary mb-6"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
               >
-                <social.icon className="h-5 w-5 text-foreground" />
-              </motion.a>
-            ))}
-          </motion.div>
+                👋 Welcome To My Portofolio
+              </motion.span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="font-display text-4xl md:text-6xl font-bold mb-6 leading-tight"
+            >
+              Hi I'm
+              <br />
+              <span className="text-gradient">Fawas Dwi Kuswandar</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-lg md:text-xl text-muted-foreground mb-8 lg:mx-0"
+            >
+              Saya adalah seorang murid dari MAN 1 Banda Aceh yang saat ini
+              sedang menempuh pendidikan di kelas X-11, ini adalah portofolio saya
+              yang berisi tentang projek-projek yang telah saya buat selama ini.
+            </motion.p>
+
+            {/* Tombol Aksi (Rata kiri pada layar besar) */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12"
+            >
+              <Button 
+                size="lg" 
+                className="rounded-full px-8 shadow-glow w-full sm:w-auto"
+                onClick={() => {
+                  const element = document.querySelector('#projects');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Lihat Projects
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="rounded-full px-8 w-full sm:w-auto"
+                onClick={() => {
+                  const element = document.querySelector('#contact');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Hubungi Saya
+              </Button>
+            </motion.div>
+
+            {/* Sosial Media Icons (Rata kiri pada layar besar) */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="flex items-center justify-center lg:justify-start gap-6"
+            >
+              {[
+                { icon: Github, href: 'https://github.com/fawwazdwi-arch/fawwaz-third.git', label: 'GitHub' },
+                { icon: Youtube, href: 'https://www.youtube.com/', label: 'YouTube' },
+              ].map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  className="p-3 rounded-full glass hover:shadow-glow transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label={social.label}
+                >
+                  <social.icon className="h-5 w-5 text-foreground" />
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
+
         </div>
       </div>
 
